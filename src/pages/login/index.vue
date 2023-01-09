@@ -1,7 +1,7 @@
 <!--
  * @Author: Nic
  * @Date: 2023-01-08 09:38:08
- * @LastEditTime: 2023-01-08 16:37:48
+ * @LastEditTime: 2023-01-09 22:34:07
  * @LastEditors: Nic
  * @Description: 
  * @FilePath: /uni-vue3-ts/src/pages/login/index.vue
@@ -28,32 +28,25 @@ const onLogin = async () => {
   console.log('res', res)
 }
 const login = () => {
-  uni.showModal({
-    title: '温馨提示',
-    content: '亲，授权微信登录后才能正常使用小程序功能',
-    success(res) {
-      if (res.confirm) {
-        uni.getUserProfile({
-          desc: '注册用户信息使用',
-          lang: 'zh_CN',
-          success: (res) => {
-            console.log('res', res)
-            uni.login({
-              provider: 'weixin',
-              success(loginRes) {
-                console.log('loginRes.authResult', loginRes)
-                // 在这个地方普通开发中就应该去调用后端给的api进行登录操作了
-                // 现在这个地方我们需要换成云函数进行相关操作
-              }
-            })
-          }
-        })
-      } else {
-        uni.showToast({
-          title: '您取消了授权',
-          duration: 2000
-        })
-      }
+  uni.login({
+    provider: 'weixin',
+    success(loginRes) {
+      console.log('loginRes', loginRes)
+      const { code } = loginRes
+      uniCloud.callFunction({
+        name: 'login',
+        data: {
+          code
+        },
+        success: (res) => {
+          console.log('res22222222', res)
+          console.log(
+            'uniCloud.getCurrentUserInfo()',
+            uniCloud.getCurrentUserInfo()
+          )
+        },
+        secretType: 'none'
+      })
     }
   })
 }
