@@ -1,5 +1,14 @@
+<!--
+ * @Author: Nic
+ * @Date: 2022-12-28 21:51:46
+ * @LastEditTime: 2023-01-08 09:38:40
+ * @LastEditors: Nic
+ * @Description: 
+ * @FilePath: /uni-vue3-ts/src/pages/index/index.vue
+-->
 <template>
   <view class="index-page">
+    <Login />
     <Hello />
     <UnoCss />
     <text class="h2"> 查看其它页面示例↓ </text>
@@ -13,6 +22,7 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue'
+import Login from '@/pages/login/index.vue'
 import Hello from '@/components/hello/index.vue'
 import UnoCss from '@/components/unocss/index.vue'
 

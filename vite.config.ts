@@ -1,14 +1,32 @@
+/*
+ * @Author: Nic
+ * @Date: 2022-12-28 21:51:46
+ * @LastEditTime: 2023-01-07 21:47:40
+ * @LastEditors: Nic
+ * @Description:
+ * @FilePath: /uni-vue3-ts/vite.config.ts
+ */
 import { defineConfig } from 'vite'
 import uni from '@dcloudio/vite-plugin-uni'
 import path from 'path'
 import Unocss from 'unocss/vite'
+import AutoImport from 'unplugin-auto-import/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     uni(),
     // https://github.com/antfu/unocss
-    Unocss()
+    Unocss(),
+    AutoImport({
+      include: [
+        /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+        /\.vue$/,
+        /\.vue\?vue/ // .vue
+      ],
+      imports: ['vue', 'uni-app'],
+      dts: 'typings/auto-imports.d.ts'
+    })
   ],
   server: {
     // port: 8080,

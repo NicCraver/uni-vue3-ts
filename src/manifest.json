@@ -54,11 +54,12 @@
   "quickapp": {},
   /* 小程序特有相关 */
   "mp-weixin": {
-    "appid": "wxf326f1995627c671",
+    "appid": "wxc29c12d3e3262a6a",
     "setting": {
       "urlCheck": false
     },
-    "usingComponents": true
+    "usingComponents": true,
+    "cloudfunctionRoot":"helloworld/"
   },
   "mp-alipay": {
     "usingComponents": true

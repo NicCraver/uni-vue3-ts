@@ -1,7 +1,16 @@
+/*
+ * @Author: Nic
+ * @Date: 2022-12-28 21:51:46
+ * @LastEditTime: 2022-12-29 09:23:34
+ * @LastEditors: Nic
+ * @Description:
+ * @FilePath: /uni-vue3-ts/src/main.ts
+ */
 import { createSSRApp } from 'vue'
 import * as Pinia from 'pinia'
-// @ts-ignore
+// @ts-expect-error
 import uView from 'vk-uview-ui'
+
 import App from './App.vue'
 
 // unocss

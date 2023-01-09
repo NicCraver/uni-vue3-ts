@@ -14,24 +14,61 @@
     }
   },
   "extends": [
+    "@antfu",
     "airbnb-base",
     "eslint:recommended",
     "plugin:prettier/recommended",
     "plugin:vue/vue3-essential",
     "plugin:@typescript-eslint/recommended"
   ],
-  "plugins": ["vue", "@typescript-eslint", "todo-ddl"],
+  "plugins": [
+    "vue",
+    "@typescript-eslint",
+    "todo-ddl"
+  ],
   "rules": {
+    "no-shadow": "off",
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": [
+          "e", // for e.returnvalue
+          "ctx", // for Koa routing
+          "req", // for Express requests
+          "request", // for Express requests
+          "res", // for Express responses
+          "response", // for Express responses
+          "state" // for vuex state
+        ]
+      }
+    ],
+    "no-console": "off",
+    "vue/component-tags-order": [
+      "error",
+      {
+        "order": [
+          "template",
+          "script",
+          "style"
+        ]
+      }
+    ],
     "@typescript-eslint/ban-types": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "import/extensions": "off",
-    "quotes": ["warn", "single"],
-    "semi": ["warn", "never"],
+    "quotes": [
+      "warn",
+      "single"
+    ],
+    "semi": [
+      "warn",
+      "never"
+    ],
     "import/no-unresolved": "off",
     "todo-ddl/diy": "warn",
     "import/prefer-default-export": "off",
-    "no-param-reassign": "warn",
     "import/no-extraneous-dependencies": "off",
     "max-len": "warn",
     "no-restricted-syntax": "off",
